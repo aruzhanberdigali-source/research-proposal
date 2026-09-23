@@ -2,17 +2,16 @@
    Design tokens
    ======================================================== */
 :root {
-  --paper: #fdfdfc;
-  --panel: #f4f4f1;
-  --ink: #24211d;
-  --ink-soft: #57534a;
-  --rule: #ddd9d0;
-  --accent: #2b5d5a;      /* deep teal — links, nav highlight */
-  --accent-soft: #e4edec;
-  --gold: #b3873f;        /* used sparingly: sequence numbers only */
+  --paper: #fbf9f5;
+  --panel: #fbf9f5;
+  --ink: #2a2521;
+  --ink-soft: #6b6258;
+  --rule: #e2dccf;
+  --accent: #7a2e3c;      /* deep burgundy — the one accent: links + theme numbers only */
+  --accent-soft: #f3e7e9;
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --sans: "Public Sans", -apple-system, "Segoe UI", Arial, sans-serif;
-  --maxw: 760px;
+  --maxw: 720px;
 }
 
 * { box-sizing: border-box; }
@@ -35,9 +34,16 @@ h1, h2, h3 {
   color: var(--ink);
 }
 
-h1 { font-size: 2.1rem; margin: 0 0 .3em; }
-h2 { font-size: 1.4rem; margin: 2em 0 .5em; }
-h3 { font-size: 1.1rem; margin: 1.6em 0 .4em; color: var(--accent); }
+h1 { font-size: 2rem; margin: 0 0 .3em; letter-spacing: -.01em; }
+h2 { font-size: 1.35rem; margin: 2.2em 0 .5em; padding-top: 1em; border-top: 1px solid var(--rule); }
+h3 { font-size: 1.05rem; margin: 1.6em 0 .4em; color: var(--accent); }
+
+.hero h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -.015em;
+  margin: .2em 0 .35em;
+}
 
 p, li { max-width: var(--maxw); }
 p { margin: 0 0 1em; }
@@ -114,7 +120,7 @@ a:hover { text-decoration: none; }
 
 .sidebar nav a::before {
   content: counter(chapter) ". ";
-  color: var(--gold);
+  color: var(--accent);
   font-weight: 600;
   margin-right: .15em;
 }
@@ -142,15 +148,14 @@ a:hover { text-decoration: none; }
    Components
    ======================================================== */
 .card {
-  background: var(--panel);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  padding: 1.2em 1.4em;
-  margin: 1.4em 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.2em 0;
+  margin: 1.6em 0;
 }
 
 .pull {
-  border-left: 3px solid var(--gold);
+  border-left: 3px solid var(--accent);
   padding-left: 1em;
   color: var(--ink-soft);
   font-style: italic;
@@ -170,7 +175,7 @@ a:hover { text-decoration: none; }
 .theme .num {
   font-family: var(--serif);
   font-size: 1.6rem;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .theme h3 { margin-top: 0; }
@@ -187,8 +192,8 @@ a:hover { text-decoration: none; }
 
 .diagram .box {
   border: 1px solid var(--rule);
-  background: var(--panel);
-  border-radius: 6px;
+  background: none;
+  border-radius: 3px;
   padding: .7em 1.1em;
   text-align: center;
   width: 100%;
@@ -196,7 +201,7 @@ a:hover { text-decoration: none; }
 }
 
 .diagram .arrow {
-  color: var(--gold);
+  color: var(--accent);
   font-size: 1.3rem;
   line-height: 1;
 }
@@ -218,9 +223,8 @@ a:hover { text-decoration: none; }
 }
 
 .reflect-box {
-  border: 1.5px dashed var(--rule);
-  border-radius: 6px;
-  padding: 1.2em 1.3em;
+  border-top: 1px solid var(--rule);
+  padding: 1.2em 0;
   margin: 1.2em 0;
   color: var(--ink-soft);
 }
