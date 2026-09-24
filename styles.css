@@ -14,6 +14,36 @@
   --maxw: 720px;
 }
 
+/* ========================================================
+   Smooth page-to-page transitions (native, no JS)
+   Modern browsers (Chrome/Edge) cross-fade automatically;
+   others just get the small fade-in below as a fallback.
+   ======================================================== */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: .35s;
+  animation-timing-function: ease;
+}
+
+@keyframes contentFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.content {
+  animation: contentFadeIn .35s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content { animation: none; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
